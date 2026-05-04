@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IKEA Home Device Concept · Kieu Anh Hong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F9F8F5; --ink: #18180F; --ink-mid: #5C5C50; --ink-light: #9C9C8E;
+    --accent: #7B5EA7; --border: rgba(24,24,15,0.10);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Figtree', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.7; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(249,248,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 60px; }
+  .nav-back { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--ink); }
+  .nav-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; text-decoration: none; color: var(--ink); }
+  .hero { padding: 10vh 5vw 7vh; max-width: 900px; margin: 0 auto; }
+  .hero-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1.2rem; }
+  .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 300; line-height: 1.1; margin-bottom: 2rem; }
+  .hero-title em { font-style: italic; color: var(--ink-mid); }
+  .hero-meta { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .meta-key { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); }
+  .meta-val { font-size: 0.9rem; color: var(--ink-mid); }
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 0 5vw; }
+  .content { padding: 5rem 5vw; max-width: 900px; margin: 0 auto; }
+  h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; }
+  h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.8rem; margin-top: 2rem; }
+  h3:first-child { margin-top: 0; }
+  p { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.85; margin-bottom: 1.2rem; }
+  p strong { font-weight: 500; color: var(--ink); }
+  p:last-child { margin-bottom: 0; }
+  .callout { border-left: 2px solid var(--accent); padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(123,94,167,0.04); border-radius: 0 4px 4px 0; }
+  .callout p { margin-bottom: 0; font-size: 0.92rem; }
+
+  /* SCREENS — three up */
+  .screens-three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2.5rem 0; }
+  .screen-wrap img { width: 100%; border-radius: 16px; border: 1px solid var(--border); display: block; box-shadow: 0 4px 24px rgba(24,24,15,0.07); }
+  .screen-caption { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); margin-top: 0.7rem; text-align: center; }
+
+  /* FEATURE BREAKDOWN */
+  .feature-list { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--border); margin: 2rem 0; }
+  .feature-row { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; padding: 1.4rem 1.5rem; background: var(--bg); border: 1px solid var(--border); align-items: start; }
+  .feature-screen { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); padding-top: 0.15rem; }
+  .feature-body h4 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 400; margin-bottom: 0.4rem; }
+  .feature-body p { font-size: 0.88rem; margin-bottom: 0; }
+
+  .tag-list { display: flex; gap: 0.4rem; flex-wrap: wrap; margin: 1.5rem 0; }
+  .tag { font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 1rem; background: rgba(24,24,15,0.05); color: var(--ink-mid); }
+
+  footer { border-top: 1px solid var(--border); padding: 2rem 5vw; display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; font-size: 0.78rem; color: var(--ink-light); letter-spacing: 0.05em; }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 680px) { .screens-three { grid-template-columns: 1fr; } .feature-row { grid-template-columns: 1fr; gap: 0.4rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="index.html">← Portfolio</a>
+  <a class="nav-name" href="index.html">Research & Design Portfolio</a>
+</nav>
+
+<div class="hero fade-in">
+  <p class="hero-label">UX Design · Interface Design · Speculative Concept</p>
+  <h1 class="hero-title">IKEA Home Device<br><em>Screen Concept</em></h1>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-key">Role</span><span class="meta-val">Sole Designer</span></div>
+    <div class="meta-item"><span class="meta-key">Tool</span><span class="meta-val">Figma</span></div>
+    <div class="meta-item"><span class="meta-key">Type</span><span class="meta-val">Speculative Interface Design</span></div>
+    <div class="meta-item"><span class="meta-key">Inspired by</span><span class="meta-val">IKEA · Smart Home Displays</span></div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Concept</h2>
+  <p>This project imagines what a smart home display designed by IKEA might look and feel like. IKEA's brand is built around the idea that well-designed, functional objects should be accessible to everyone — and that the home should be a place that genuinely works for the people living in it. This concept extends that philosophy into a screen-based device: a home assistant that integrates the rhythms of daily life with IKEA's own ecosystem of products and services.</p>
+  <p>Rather than designing a generic smart display, I asked: <strong>what would IKEA specifically add to this space?</strong> The answer shaped all three screens — a daily dashboard, an intelligent search experience, and a personalized shopping assistant — each one finding a natural connection between what a home device can do and what IKEA uniquely offers.</p>
+
+  <div class="callout">
+    <p>The central design challenge was making IKEA feel like a helpful presence in the home rather than an advertising surface — useful first, branded second.</p>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Screen Designs</h2>
+
+  <div class="screens-three">
+    <div class="screen-wrap">
+      <img src="screens/Home_sceen.png" alt="IKEA home device home screen">
+      <p class="screen-caption">Home screen</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/Voice_search.png" alt="IKEA home device search screen">
+      <p class="screen-caption">Search</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/groceries.png" alt="IKEA home device groceries screen">
+      <p class="screen-caption">Groceries</p>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Screen Breakdown</h2>
+
+  <div class="feature-list">
+
+    <div class="feature-row">
+      <span class="feature-screen">Home screen</span>
+      <div class="feature-body">
+        <h4>Daily dashboard</h4>
+        <p>The home screen greets the user simply — "Hello, How can I help you today?" — and provides a searchable interface alongside three contextual widgets: a real-time weather card showing local conditions and forecast, a personal to-do list pulling from the user's tasks, and a calendar view surfacing the day's meetings. The layout is deliberately minimal, placing the search bar at the center to encourage active use while the widgets offer ambient awareness at a glance. The IKEA brand appears as a logo only — the interface itself is neutral and calm, feeling at home in any living space.</p>
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <span class="feature-screen">Search</span>
+      <div class="feature-body">
+        <h4>Bridging physical and digital</h4>
+        <p>When a user searches for something — shown here as "Where can I buy candles near me?" — the device first surfaces helpful local results via Google Maps, listing nearby candle stores with ratings, hours, and reviews. Then, crucially, it introduces an IKEA alternative: the same item, available for delivery directly to the user's door through IKEA's own catalog. The phrase <em>"alternatively, you could get it delivered to your door"</em> frames IKEA not as the only answer but as a genuinely convenient one — reducing friction without being pushy. This search model respects the user's intent while making IKEA's value proposition feel organic and timely.</p>
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <span class="feature-screen">Groceries</span>
+      <div class="feature-body">
+        <h4>Personalized shopping assistant</h4>
+        <p>The groceries screen responds to the user's question — "What groceries do I need to get?" — by surfacing a personalized list of items with product images, prices, and store locations. Each item includes a "Search Store Near Me" link and an "Add to Cart" button, making it easy to either find the item locally or order it online. The screen is addressed to the user by name ("Hey Astrid,") and the items reflect personal needs or a connected list — demonstrating how the device could integrate with household data, smart appliances, or a shared family shopping list to make grocery planning genuinely effortless.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Design Decisions</h2>
+
+  <h3>Soft, domestic visual language</h3>
+  <p>The interface uses IKEA's yellow and blue sparingly — the logo at the top of each screen is the only overt branding. The rest of the UI uses a light background, clean sans-serif type, and soft card shadows that feel at home on a kitchen counter or beside a couch. The device should feel like it belongs in the room, not like a screen demanding attention.</p>
+
+  <h3>Contextual intelligence over generic utility</h3>
+  <p>Each screen is designed around something a person in their home actually needs — the weather before they leave, their schedule for the day, where to buy something, what to cook or shop for. The device earns its place in the home by being genuinely useful in those moments, and IKEA enters naturally as a provider of things people already need rather than as a brand pushing products.</p>
+
+  <h3>Personalization as warmth</h3>
+  <p>Addressing users by name ("Hello," on the home screen, "Hey Astrid," on the groceries screen) is a deliberate choice. Smart home devices often feel cold and transactional. Using the person's name and tailoring content to their tasks makes the device feel like it knows who it's for — consistent with IKEA's positioning as a brand that understands how people actually live.</p>
+
+  <div class="tag-list">
+    <span class="tag">Speculative Design</span>
+    <span class="tag">Interface Design</span>
+    <span class="tag">Smart Home</span>
+    <span class="tag">Personalization</span>
+    <span class="tag">Figma</span>
+    <span class="tag">Information Architecture</span>
+  </div>
+</div>
+
+<footer>
+  <span>Kieu Anh Hong · Research & Design Portfolio</span>
+  <a href="index.html" style="color:var(--ink-light);text-decoration:none;font-size:0.78rem;letter-spacing:0.05em;">← Back to portfolio</a>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); },
+    { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
