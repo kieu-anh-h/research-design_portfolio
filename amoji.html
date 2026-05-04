@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>amoji · Kieu Anh Hong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F9F8F5; --ink: #18180F; --ink-mid: #5C5C50; --ink-light: #9C9C8E;
+    --accent: #7B5EA7; --border: rgba(24,24,15,0.10);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Figtree', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.7; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(249,248,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 60px; }
+  .nav-back { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--ink); }
+  .nav-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; text-decoration: none; color: var(--ink); }
+  .hero { padding: 10vh 5vw 7vh; max-width: 900px; margin: 0 auto; }
+  .hero-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1.2rem; }
+  .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 300; line-height: 1.1; margin-bottom: 2rem; }
+  .hero-title em { font-style: italic; color: var(--ink-mid); }
+  .hero-meta { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .meta-key { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); }
+  .meta-val { font-size: 0.9rem; color: var(--ink-mid); }
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 0 5vw; }
+  .content { padding: 5rem 5vw; max-width: 900px; margin: 0 auto; }
+  h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; }
+  h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.8rem; margin-top: 2rem; }
+  h3:first-child { margin-top: 0; }
+  p { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.85; margin-bottom: 1.2rem; }
+  p strong { font-weight: 500; color: var(--ink); }
+  .callout { border-left: 2px solid var(--accent); padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(123,94,167,0.04); border-radius: 0 4px 4px 0; }
+  .callout p { margin-bottom: 0; font-size: 0.92rem; }
+  .process-steps { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--border); margin: 2rem 0; }
+  .process-step { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; padding: 1.5rem; background: var(--bg); border: 1px solid var(--border); align-items: start; }
+  .step-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); padding-top: 0.2rem; }
+  .step-body p { margin-bottom: 0; font-size: 0.88rem; }
+  .step-body h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 400; margin-bottom: 0.4rem; }
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; border: 1px solid var(--border); margin: 2rem 0; }
+  .feature-card { padding: 1.5rem; background: var(--bg); border: 1px solid var(--border); }
+  .feature-name { font-family: var(--font-display); font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem; }
+  .feature-desc { font-size: 0.83rem; color: var(--ink-mid); line-height: 1.65; }
+  /* SCREENS */
+  .screens-gallery { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 1rem; margin: 2rem 0; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .screen-wrap { flex-shrink: 0; scroll-snap-align: start; }
+  .screen-wrap img { height: 460px; width: auto; border-radius: 16px; border: 1px solid var(--border); display: block; object-fit: contain; background: #fff; }
+  .screen-caption { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); margin-top: 0.6rem; text-align: center; }
+  .tag { font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 1rem; background: rgba(24,24,15,0.05); color: var(--ink-mid); }
+  footer { border-top: 1px solid var(--border); padding: 2rem 5vw; display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; font-size: 0.78rem; color: var(--ink-light); letter-spacing: 0.05em; }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 680px) { .process-step { grid-template-columns: 1fr; gap: 0.4rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="portfolio.html">← Portfolio</a>
+  <a class="nav-name" href="portfolio.html">Research & Design Portfolio</a>
+</nav>
+
+<div class="hero fade-in">
+  <p class="hero-label">UX Design · HFE Capstone · 2024</p>
+  <h1 class="hero-title">amoji —<br><em>Social Platform for SCI Survivors</em></h1>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-key">Roles</span><span class="meta-val">Project Manager · Researcher · Designer</span></div>
+    <div class="meta-item"><span class="meta-key">Client</span><span class="meta-val">amoji (rebranded from Moova)</span></div>
+    <div class="meta-item"><span class="meta-key">Context</span><span class="meta-val">HFE Capstone · Group Project</span></div>
+    <div class="meta-item"><span class="meta-key">Type</span><span class="meta-val">Discovery → Design → Validation</span></div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Overview</h2>
+  <p>amoji, rebranded from Moova, is a startup dedicated to creating a social platform for people who have suffered traumatic injuries. The platform seeks to help those recovering from life-altering injuries by providing a space <strong>specifically designed for them</strong> — to heal lost social connections caused by their injury and build new, dependable ones.</p>
+  <p>I worked on amoji as part of my HFE Capstone group project in the roles of <strong>Project Manager, Researcher, and Designer</strong>. The process ran from initial discovery research through high-fidelity prototype validation with the spinal cord injury (SCI) community.</p>
+
+  <div class="callout">
+    <p><strong>How might we design a digital platform that both enhances and repairs existing social support networks for Spinal Cord Injury (SCI) survivors?</strong></p>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Screen Designs</h2>
+  <p>The designs below span the full process — from early wireframes through to the high-fidelity prototype validated with the SCI community.</p>
+
+  <div class="screens-gallery">
+    <div class="screen-wrap">
+      <img src="screens/amoji_p0_0.jpeg" alt="amoji goals screen">
+      <p class="screen-caption">Goals overview</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/amoji_p0_1.jpeg" alt="amoji profile screen">
+      <p class="screen-caption">User profile</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/amoji_p0_2.jpeg" alt="amoji goal creation">
+      <p class="screen-caption">Goal creation</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/amoji_doc_p0_0.jpeg" alt="amoji wireframe screen 1">
+      <p class="screen-caption">Wireframe — onboarding</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/amoji_doc_p0_1.jpeg" alt="amoji wireframe screen 2">
+      <p class="screen-caption">Wireframe — profile</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/amoji_doc_p0_2.jpeg" alt="amoji wireframe screen 3">
+      <p class="screen-caption">Wireframe — goals</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/amoji_doc_p0_3.jpeg" alt="amoji prototype screen">
+      <p class="screen-caption">Medium fidelity</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/amoji_doc_p0_4.jpeg" alt="amoji hi-fi screen">
+      <p class="screen-caption">High fidelity — home</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/amoji_doc_p0_5.jpeg" alt="amoji hi-fi screen 2">
+      <p class="screen-caption">High fidelity — goals</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/amoji_doc_p0_6.jpeg" alt="amoji hi-fi screen 3">
+      <p class="screen-caption">High fidelity — challenges</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/amoji_doc_p0_8.jpeg" alt="amoji hi-fi screen 4">
+      <p class="screen-caption">High fidelity — progress</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/amoji_doc_p0_9.jpeg" alt="amoji hi-fi screen 5">
+      <p class="screen-caption">High fidelity — profile</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/amoji_doc_p0_10.jpeg" alt="amoji hi-fi screen 6">
+      <p class="screen-caption">High fidelity — settings</p>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Process</h2>
+
+  <div class="process-steps">
+    <div class="process-step">
+      <span class="step-label">Step 1 · Research</span>
+      <div class="step-body">
+        <h4>Discovery with the SCI community</h4>
+        <p>The team began by reaching out to SCI support groups found online, sharing project goals and distributing demographic surveys. This established an initial connection to the community that made deeper research possible. Surveys were followed by interviews with SCI survivors and people within their networks — family members, friends, and caretakers — to understand the texture of social experience after injury.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <span class="step-label">Step 2 · Synthesis</span>
+      <div class="step-body">
+        <h4>Thematic analysis &amp; user needs</h4>
+        <p>Interview and survey data was analyzed through thematic analysis to identify recurring patterns in how SCI survivors experience social connection and isolation. Findings were synthesized into user needs that directly shaped the feature set of the platform. A journey map was created to visualize the emotional arc of SCI survivors navigating social relationships after injury.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <span class="step-label">Step 3 · Ideation</span>
+      <div class="step-body">
+        <h4>Team ideating &amp; concept development</h4>
+        <p>The team generated and evaluated multiple feature concepts through collaborative ideation sessions. Concepts were assessed against user needs and feasibility before being carried into medium-fidelity prototyping.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <span class="step-label">Step 4 · Concept Testing</span>
+      <div class="step-body">
+        <h4>Qualtrics survey testing</h4>
+        <p>Individual features were concept tested through a survey built in Qualtrics. This provided quantitative signal on which features resonated most with the SCI community before committing to full prototype development. Interviews also allowed participants to interact with medium-fidelity screens and give direct feedback on feature logic.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <span class="step-label">Step 5 · Usability Testing</span>
+      <div class="step-body">
+        <h4>High-fidelity prototype validation</h4>
+        <p>The high-fidelity prototype was tested with participants recruited from the earlier research phases. In each session, participants completed a series of tasks using the prototype. At the end of each feature, a <strong>System Usability Score (SUS)</strong> was calculated, providing a quantitative reference alongside the qualitative data collected in the interview. This dual-method approach allowed the team to triangulate findings and prioritize issues by both frequency and severity.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Key Features Designed</h2>
+  <p>The final design addressed the following user needs surfaced through research:</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <p class="feature-name">Digital identity control</p>
+      <p class="feature-desc">Users define how they present themselves on the platform — giving survivors autonomy over their own narrative and how their injury is represented.</p>
+    </div>
+    <div class="feature-card">
+      <p class="feature-name">Goal setting &amp; tracking</p>
+      <p class="feature-desc">Users can set goals specific to their recovery and circumstances, choose from preset goals for inspiration, and define how they plan to meet each goal. Progress is tracked and visible.</p>
+    </div>
+    <div class="feature-card">
+      <p class="feature-name">Challenges with friends</p>
+      <p class="feature-desc">Shared challenges allow users to pursue goals alongside others — creating accountability and social connection rooted in shared experience.</p>
+    </div>
+    <div class="feature-card">
+      <p class="feature-name">Accomplishment tracking</p>
+      <p class="feature-desc">Past accomplishments are surfaced and celebrated on the user's profile — countering the tendency for progress to feel invisible during long recoveries.</p>
+    </div>
+  </div>
+
+  <div class="tag-list">
+    <span class="tag">Discovery Research</span>
+    <span class="tag">Thematic Analysis</span>
+    <span class="tag">Journey Mapping</span>
+    <span class="tag">Concept Testing</span>
+    <span class="tag">Qualtrics</span>
+    <span class="tag">Usability Testing</span>
+    <span class="tag">SUS</span>
+    <span class="tag">Wireframing</span>
+    <span class="tag">High-Fidelity Prototyping</span>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Findings</h2>
+  <p>Usability testing of the high-fidelity prototype yielded two primary areas for improvement carried into final design revisions:</p>
+  <p><strong>Navigation clarity and consistency.</strong> Participants occasionally lost track of their location within the app and found some navigation patterns inconsistent across features. Recommendations focused on standardizing back navigation, clarifying tab bar labels, and providing persistent orientation cues.</p>
+  <p><strong>Design cohesiveness across features.</strong> Visual and interaction patterns varied between features developed at different stages of the process. Recommendations focused on establishing a tighter shared component library and consistent use of color, typography, and spacing across the full prototype.</p>
+</div>
+
+<footer>
+  <span>Kieu Anh Hong · Research & Design Portfolio</span>
+  <a href="portfolio.html" style="color:var(--ink-light);text-decoration:none;font-size:0.78rem;letter-spacing:0.05em;">← Back to portfolio</a>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); },
+    { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

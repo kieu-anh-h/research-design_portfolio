@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avatar Customization & Identification · Kieu Anh Hong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F9F8F5; --ink: #18180F; --ink-mid: #5C5C50; --ink-light: #9C9C8E;
+    --accent: #3B5BA5; --border: rgba(24,24,15,0.10);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Figtree', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.7; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(249,248,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 60px; }
+  .nav-back { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--ink); }
+  .nav-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; text-decoration: none; color: var(--ink); }
+  .hero { padding: 10vh 5vw 7vh; max-width: 900px; margin: 0 auto; }
+  .hero-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1.2rem; }
+  .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 300; line-height: 1.1; margin-bottom: 2rem; }
+  .hero-title em { font-style: italic; color: var(--ink-mid); }
+  .hero-meta { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .meta-key { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); }
+  .meta-val { font-size: 0.9rem; color: var(--ink-mid); }
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 0 5vw; }
+  .content { padding: 5rem 5vw; max-width: 900px; margin: 0 auto; }
+  h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; }
+  h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.8rem; margin-top: 2rem; }
+  h3:first-child { margin-top: 0; }
+  p { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.85; margin-bottom: 1.2rem; }
+  p strong { font-weight: 500; color: var(--ink); }
+  .callout { border-left: 2px solid var(--accent); padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(59,91,165,0.04); border-radius: 0 4px 4px 0; }
+  .callout p { margin-bottom: 0; font-size: 0.92rem; }
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; border: 1px solid var(--border); margin: 2rem 0; }
+  .concept-card { padding: 1.5rem; background: var(--bg); border: 1px solid var(--border); }
+  .concept-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; margin-bottom: 0.6rem; }
+  .concept-desc { font-size: 0.85rem; color: var(--ink-mid); line-height: 1.65; }
+  .hyp-block { border: 1px solid var(--border); padding: 1.5rem 2rem; margin: 1.5rem 0; border-radius: 4px; }
+  .hyp-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .hyp-text { font-size: 0.92rem; color: var(--ink-mid); line-height: 1.7; }
+  .steps-list { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--border); margin: 2rem 0; }
+  .step { display: grid; grid-template-columns: 48px 1fr; gap: 1.5rem; padding: 1.2rem 1.5rem; background: var(--bg); border: 1px solid var(--border); align-items: start; }
+  .step-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; color: rgba(59,91,165,0.3); line-height: 1; }
+  .step-content p { margin-bottom: 0; font-size: 0.88rem; }
+  .step-content strong { font-size: 0.88rem; }
+  .tag-list { display: flex; gap: 0.4rem; flex-wrap: wrap; margin: 1rem 0; }
+  .tag { font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 1rem; background: rgba(24,24,15,0.05); color: var(--ink-mid); }
+  footer { border-top: 1px solid var(--border); padding: 2rem 5vw; display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; font-size: 0.78rem; color: var(--ink-light); letter-spacing: 0.05em; }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="portfolio.html">← Portfolio</a>
+  <a class="nav-name" href="portfolio.html">Research & Design Portfolio</a>
+</nav>
+
+<div class="hero fade-in">
+  <p class="hero-label">HCI Research · Study Design · 2025</p>
+  <h1 class="hero-title">Avatar Customization<br>&amp; <em>Avatar Identification</em></h1>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-key">Role</span><span class="meta-val">Principal Investigator</span></div>
+    <div class="meta-item"><span class="meta-key">Framework</span><span class="meta-val">Proteus Effect · SDT</span></div>
+    <div class="meta-item"><span class="meta-key">Planned N</span><span class="meta-val">160 participants</span></div>
+    <div class="meta-item"><span class="meta-key">Setting</span><span class="meta-val">Controlled lab study</span></div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Overview</h2>
+  <p>This study was designed to investigate how the <strong>gender and species of a virtual avatar</strong> influences the type of identification a player forms with that avatar, and whether different identification types lead to meaningfully different in-game behaviors. The study is grounded in two connected bodies of literature: research on avatar identification and the Proteus Effect.</p>
+
+  <div class="concept-grid">
+    <div class="concept-card">
+      <p class="concept-name">Proteus Effect</p>
+      <p class="concept-desc">In mediated environments, users will behave in ways that their avatar's physical characteristics suggest — regardless of their own identity. The avatar acts as a behavioral cue.</p>
+    </div>
+    <div class="concept-card">
+      <p class="concept-name">Avatar Identification</p>
+      <p class="concept-desc">The perception a user holds of their avatar in relation to themselves. Comes in three forms: <strong>similarity</strong> (the avatar reflects who I am), <strong>wishful</strong> (the avatar reflects who I want to be), and <strong>embodied</strong> (I experience the game through the avatar).</p>
+    </div>
+    <div class="concept-card">
+      <p class="concept-name">Avatar Customization</p>
+      <p class="concept-desc">The act of modifying an avatar's physical characteristics — including gender expression and species — to align with self-perception or desired mediated identity.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Hypotheses</h2>
+
+  <div class="hyp-block">
+    <p class="hyp-label">H0</p>
+    <p class="hyp-text">The gender and species of an avatar has no effect on similarity, embodied, or wishful identification.</p>
+  </div>
+  <div class="hyp-block">
+    <p class="hyp-label">H1</p>
+    <p class="hyp-text">There are no differences observed in the behaviors of users that have different identifications with their avatar.</p>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Study Environment</h2>
+
+  <h3>Physical environment</h3>
+  <p>The lab space is organized into <strong>computer and discussion rooms</strong> accommodating 40 participants simultaneously. Each participant has their own computer workstation. Observers are positioned separately. Food is provided to support participant comfort during sessions.</p>
+
+  <h3>Virtual environment — activities</h3>
+  <p>Once in the virtual space, participants engage in three activity types: <strong>one-on-one chat</strong>, <strong>group discussion</strong>, and a <strong>racing game</strong>. These were selected to probe different social and achievement-oriented behaviors that map onto identification types.</p>
+
+  <h3>Customization options</h3>
+  <p>Participants choose their avatar from three species categories, each with distinct sexual characteristics:</p>
+  <div class="tag-list">
+    <span class="tag">Human</span>
+    <span class="tag">Bird — Crimson-backed Tanager</span>
+    <span class="tag">Bird — Thick-billed Euphonia</span>
+    <span class="tag">Bird — Green Honeycreeper</span>
+    <span class="tag">Insect — Rhinoceros Beetle</span>
+    <span class="tag">Insect — Luna Moth</span>
+    <span class="tag">Insect — Honey Bee</span>
+  </div>
+  <p>Species were selected specifically to include options with <strong>sexually dimorphic physical characteristics</strong>, allowing the study to examine how gendered visual cues in non-human forms influence identification.</p>
+
+  <h3>Behavioral tracking</h3>
+  <p>The virtual environment tracks frequency of engaging in each activity, time spent per activity, chat logs, emotional state, and participant focus.</p>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Participants</h2>
+  <p>A target of <strong>160 participants</strong> was determined to provide sufficient statistical power to detect a medium effect across the targeted variables. Participants are required to be over 18, reside within travelling distance to the lab, and be proficient with WASD movement and third-person avatar control.</p>
+  <p>Recruitment uses social media flyers followed by a screening survey to verify eligibility. No financial incentive is provided.</p>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Procedure</h2>
+
+  <div class="steps-list">
+    <div class="step">
+      <span class="step-num">1</span>
+      <div class="step-content"><p><strong>Avatar customization (10 min).</strong> Participants customize their avatar using the controls provided. They select species, gender expression, and relevant visual attributes. What species and gender they choose is documented.</p></div>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <div class="step-content"><p><strong>Virtual environment session (80 min).</strong> Participants enter the virtual environment and may chat one-on-one with other players, join group discussions, and play the racing game. Behavioral data is passively collected throughout — activity frequency, time on each activity, chat log, and group time.</p></div>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <div class="step-content"><p><strong>Post-session survey (10 min).</strong> Participants complete the Player Identification Scale and the PANAS Affect Scale to measure identification type and emotional state. Results are used to classify each participant into an identification type.</p></div>
+    </div>
+    <div class="step">
+      <span class="step-num">4</span>
+      <div class="step-content"><p><strong>Group interview (80 min).</strong> Participants are broken into small groups and asked about their motivations for customization, their perception of their avatar in relation to themselves, and their interest in controlling avatar gender and species. Responses feed into the thematic analysis.</p></div>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Analysis Approach</h2>
+
+  <h3>For H0 — avatar characteristics and identification type</h3>
+  <p>A <strong>Multinomial Logistic Regression</strong> is applied, using participant gender, avatar gender, and avatar species to predict avatar identification type (none, similarity, embodied, or wishful). This method is appropriate because the outcome variable has four categorical levels, and the predictors include both binary (gender) and multi-class (species) variables.</p>
+
+  <h3>For H1 — identification type and behavior</h3>
+  <p>A <strong>mixed qualitative and quantitative approach</strong> is used. Thematic analysis is applied to group interview transcripts, coding participants' statements about customization motivation, avatar perception, and desired control over gender and species. A <strong>One-way ANOVA</strong> is then used to determine whether identification type significantly predicts time spent across the three activities — with affect scores providing a reference for how engaging in different behaviors makes participants feel.</p>
+
+  <div class="callout">
+    <p>The design deliberately pairs quantitative behavioral tracking with qualitative interview data to avoid the limitation identified in type-based player frameworks — that similar behavioral outcomes can arise from fundamentally different motivations.</p>
+  </div>
+</div>
+
+<footer>
+  <span>Kieu Anh Hong · Research & Design Portfolio</span>
+  <a href="portfolio.html" style="color:var(--ink-light);text-decoration:none;font-size:0.78rem;letter-spacing:0.05em;">← Back to portfolio</a>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); },
+    { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

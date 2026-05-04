@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certain Truths · Kieu Anh Hong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F9F8F5; --ink: #18180F; --ink-mid: #5C5C50; --ink-light: #9C9C8E;
+    --accent: #7B5EA7; --border: rgba(24,24,15,0.10);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Figtree', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.7; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(249,248,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 60px; }
+  .nav-back { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--ink); }
+  .nav-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; text-decoration: none; color: var(--ink); }
+  .hero { padding: 10vh 5vw 7vh; max-width: 900px; margin: 0 auto; }
+  .hero-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1.2rem; }
+  .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 300; line-height: 1.1; margin-bottom: 2rem; }
+  .hero-title em { font-style: italic; color: var(--ink-mid); }
+  .hero-meta { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .meta-key { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); }
+  .meta-val { font-size: 0.9rem; color: var(--ink-mid); }
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 0 5vw; }
+  .content { padding: 5rem 5vw; max-width: 900px; margin: 0 auto; }
+  h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; }
+  h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.8rem; margin-top: 2rem; }
+  h3:first-child { margin-top: 0; }
+  p { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.85; margin-bottom: 1.2rem; }
+  p strong { font-weight: 500; color: var(--ink); }
+  .callout { border-left: 2px solid var(--accent); padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(123,94,167,0.04); border-radius: 0 4px 4px 0; }
+  .callout p { margin-bottom: 0; font-size: 0.92rem; }
+  /* SCREENS GALLERY */
+  .screens-gallery { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 1rem; margin: 2rem 0; scroll-snap-type: x mandatory; }
+  .screen-wrap { flex-shrink: 0; scroll-snap-align: start; }
+  .screen-wrap img { height: 480px; width: auto; border-radius: 16px; border: 1px solid var(--border); display: block; }
+  .screen-caption { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); margin-top: 0.6rem; text-align: center; }
+  /* DARK PATTERNS */
+  .pattern-list { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--border); margin: 2rem 0; }
+  .pattern-row { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; padding: 1.2rem 1.5rem; background: var(--bg); border: 1px solid var(--border); align-items: start; }
+  .pattern-name { font-size: 0.82rem; font-weight: 500; color: var(--ink); }
+  .pattern-desc { font-size: 0.85rem; color: var(--ink-mid); line-height: 1.65; }
+  .tag-list { display: flex; gap: 0.4rem; flex-wrap: wrap; margin: 1rem 0; }
+  .tag { font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 1rem; background: rgba(24,24,15,0.05); color: var(--ink-mid); }
+  footer { border-top: 1px solid var(--border); padding: 2rem 5vw; display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; font-size: 0.78rem; color: var(--ink-light); letter-spacing: 0.05em; }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 680px) { .pattern-row { grid-template-columns: 1fr; gap: 0.5rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="portfolio.html">← Portfolio</a>
+  <a class="nav-name" href="portfolio.html">Research & Design Portfolio</a>
+</nav>
+
+<div class="hero fade-in">
+  <p class="hero-label">UX Design · Anthropology · Ethics of Interface Design · 2024</p>
+  <h1 class="hero-title">Certain Truths —<br><em>Ethics of Persuasive Design</em></h1>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-key">Role</span><span class="meta-val">Sole Designer</span></div>
+    <div class="meta-item"><span class="meta-key">Tool</span><span class="meta-val">Figma</span></div>
+    <div class="meta-item"><span class="meta-key">Context</span><span class="meta-val">Anthropology · Ethics of Design</span></div>
+    <div class="meta-item"><span class="meta-key">Type</span><span class="meta-val">Speculative Design</span></div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Context</h2>
+  <p>This project was created for an anthropology course examining the ethics of attractive interface design. The assignment asked: what does a maximally persuasive interface look like — and at what cost? Rather than critique an existing product, I designed one from scratch, building a speculative real-money prediction app called <strong>Certain Truths</strong>.</p>
+  <p>The tagline — <em>"Make money off your instincts every second of the day"</em> — frames betting not as gambling but as an expression of intelligence and cultural awareness. The goal of the design was to make that framing feel credible, familiar, and desirable, and then to use the artifact as a lens for examining how those feelings are manufactured.</p>
+
+  <div class="callout">
+    <p>Certain Truths is a critical design artifact — built not to be deployed, but to make visible the mechanics that persuasive interfaces use to manufacture engagement, urgency, and habitual return.</p>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>The App</h2>
+
+  <div class="screens-gallery">
+    <div class="screen-wrap">
+      <img src="Open1.png" alt="Certain Truths onboarding screen 1" onerror="this.parentElement.style.display='none'">
+      <p class="screen-caption">Onboarding</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="Open2.png" alt="Certain Truths onboarding screen 2" onerror="this.parentElement.style.display='none'">
+      <p class="screen-caption">Welcome</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="Home1.png" alt="Home feed" onerror="this.parentElement.style.display='none'">
+      <p class="screen-caption">Home feed</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="Trending_Topics_Global.png" alt="Trending Topics feed" onerror="this.parentElement.style.display='none'">
+      <p class="screen-caption">Trending Topics</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="Bets_by_friends.png" alt="Bets by Friends feed" onerror="this.parentElement.style.display='none'">
+      <p class="screen-caption">Bets by Friends</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="US_government_shuts_down_in_march_.png" alt="Trending topic detail — government shutdown" onerror="this.parentElement.style.display='none'">
+      <p class="screen-caption">Topic detail — Trending</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="Timothee_Chalamet_stars_in_Shrek.png" alt="Topic detail — Timothée Chalamet" onerror="this.parentElement.style.display='none'">
+      <p class="screen-caption">Topic detail — Friends</p>
+    </div>
+  </div>
+
+  <h3>How it works</h3>
+  <p>Users earn tokens by betting on whether trending news events or social predictions will come true. Topics are organized into two feeds: <strong>Trending Topics Global</strong> (broader news and cultural events) and <strong>Bets by Friends</strong> (localized, socially-surfaced predictions within a user's network). Each topic shows a price-per-bet in tokens, a mini price chart tracking betting activity over time, and the number of friends who have already bet — making every decision feel socially charged and time-sensitive.</p>
+  <p>Each topic detail page includes a <strong>Chatter</strong> section displaying comments from other bettors, adding social proof and emotional color to each prediction. When you win, you double your tokens. Tokens accumulate toward a leveling system — Stone, Silver, and beyond — displayed on the home screen with a progress bar.</p>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Design Mechanics &amp; Dark Patterns</h2>
+  <p>Each design decision in Certain Truths was deliberately chosen to demonstrate a specific persuasive or manipulative mechanism. The analysis below maps interface elements to the behavioral principles they exploit.</p>
+
+  <div class="pattern-list">
+    <div class="pattern-row">
+      <span class="pattern-name">Variable reward structure</span>
+      <p class="pattern-desc">Token multipliers tied to bet outcomes mirror the intermittent reinforcement schedule found in slot machines — the most powerful behavioral conditioning pattern. Winning doubles tokens; losing costs only what you staked, encouraging continued small bets.</p>
+    </div>
+    <div class="pattern-row">
+      <span class="pattern-name">Social proof &amp; FOMO</span>
+      <p class="pattern-desc">The "Friends who Bet" counter on every topic card creates social proof — if people you know have already bet, abstaining feels like missing out. The Bets by Friends feed surfaces this signal most intensely, centering the activity of your immediate social network.</p>
+    </div>
+    <div class="pattern-row">
+      <span class="pattern-name">Real-time news framing</span>
+      <p class="pattern-desc">Topics are drawn directly from real news events (government shutdowns, celebrity news, local incidents). Framing bets around real events conflates gambling with political and cultural engagement — the app suggests your bet is an expression of informed judgment, not a wager.</p>
+    </div>
+    <div class="pattern-row">
+      <span class="pattern-name">Chatter &amp; emotional priming</span>
+      <p class="pattern-desc">User comments on each topic create an emotional atmosphere before a bet is placed. Seeing peers express excitement, certainty, or humor lowers resistance and frames participation as social belonging rather than financial risk.</p>
+    </div>
+    <div class="pattern-row">
+      <span class="pattern-name">Price chart as urgency signal</span>
+      <p class="pattern-desc">Each topic includes a mini chart showing betting volume over time — mimicking stock market UX. A spike in activity signals that something is happening right now, manufacturing urgency even when the underlying prediction may take days or weeks to resolve.</p>
+    </div>
+    <div class="pattern-row">
+      <span class="pattern-name">Leveling &amp; progress bars</span>
+      <p class="pattern-desc">The token progress bar on the home screen creates a near-completion illusion — the bar is always partially filled, always implying that the next level is close. Gamification converts financial behavior into a sense of personal advancement.</p>
+    </div>
+    <div class="pattern-row">
+      <span class="pattern-name">Identity framing</span>
+      <p class="pattern-desc">The onboarding sequence ("Welcome to Certain Truths — Make money off your instincts") positions betting as a skill tied to self-knowledge rather than luck. This attribution error is the app's most foundational persuasive claim.</p>
+    </div>
+  </div>
+
+  <div class="tag-list">
+    <span class="tag">Variable Reward</span>
+    <span class="tag">Social Proof</span>
+    <span class="tag">FOMO</span>
+    <span class="tag">Urgency Manufacturing</span>
+    <span class="tag">Gamification</span>
+    <span class="tag">Identity Framing</span>
+    <span class="tag">Dark Patterns</span>
+    <span class="tag">Persuasive Technology</span>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Reflection</h2>
+  <p>Certain Truths demonstrates how mainstream interface design conventions — progress bars, social feeds, charts, community comments — become ethically charged when applied to financial behavior. None of the individual elements are inherently dark; it is their combination, and the context in which they operate, that constitutes the manipulation.</p>
+  <p>The project raised a question I found difficult to resolve: <strong>at what point does attractive design become exploitative design?</strong> The same interaction patterns that make a productivity app engaging make a gambling app addictive. The difference lies not in the visual language but in what behavior is being reinforced — and who benefits from that reinforcement.</p>
+</div>
+
+<footer>
+  <span>Kieu Anh Hong · Research & Design Portfolio</span>
+  <a href="portfolio.html" style="color:var(--ink-light);text-decoration:none;font-size:0.78rem;letter-spacing:0.05em;">← Back to portfolio</a>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); },
+    { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exploring Fulfillment in MMORPGs · Kieu Anh Hong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F9F8F5; --ink: #18180F; --ink-mid: #5C5C50; --ink-light: #9C9C8E;
+    --accent: #3B5BA5; --border: rgba(24,24,15,0.10);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Figtree', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.7; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(249,248,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 60px; }
+  .nav-back { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--ink); }
+  .nav-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; text-decoration: none; color: var(--ink); }
+  .hero { padding: 10vh 5vw 7vh; max-width: 900px; margin: 0 auto; }
+  .hero-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1.2rem; }
+  .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 300; line-height: 1.1; margin-bottom: 2rem; }
+  .hero-title em { font-style: italic; color: var(--ink-mid); }
+  .hero-meta { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .meta-key { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); }
+  .meta-val { font-size: 0.9rem; color: var(--ink-mid); }
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 0 5vw; }
+  .content { padding: 5rem 5vw; max-width: 900px; margin: 0 auto; }
+  .content + .section-divider + .content { padding-top: 4rem; }
+  h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; }
+  h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.8rem; margin-top: 2rem; }
+  h3:first-child { margin-top: 0; }
+  p { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.85; margin-bottom: 1.2rem; }
+  p strong { font-weight: 500; color: var(--ink); }
+  .callout { border-left: 2px solid var(--accent); padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(59,91,165,0.04); border-radius: 0 4px 4px 0; }
+  .callout p { margin-bottom: 0; font-size: 0.92rem; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin: 2rem 0; }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; border: 1px solid var(--border); margin: 2rem 0; }
+  .stat-card { padding: 1.5rem; background: var(--bg); border: 1px solid var(--border); }
+  .stat-number { font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 0.4rem; }
+  .stat-label { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); }
+  .profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; border: 1px solid var(--border); margin: 2rem 0; }
+  .profile-card { padding: 1.5rem; background: var(--bg); border: 1px solid var(--border); }
+  .profile-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; margin-bottom: 0.8rem; }
+  .profile-score { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 0.4rem; }
+  .score-bar-wrap { height: 4px; background: rgba(59,91,165,0.12); border-radius: 2px; margin-bottom: 0.3rem; }
+  .score-bar { height: 4px; background: var(--accent); border-radius: 2px; }
+  .profile-desc { font-size: 0.82rem; color: var(--ink-mid); line-height: 1.65; margin-top: 1rem; }
+  .tag-list { display: flex; gap: 0.4rem; flex-wrap: wrap; margin: 1rem 0; }
+  .tag { font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 1rem; background: rgba(24,24,15,0.05); color: var(--ink-mid); }
+  footer { border-top: 1px solid var(--border); padding: 2rem 5vw; display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; font-size: 0.78rem; color: var(--ink-light); letter-spacing: 0.05em; }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; gap: 1.5rem; } .hero-meta { gap: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="portfolio.html">← Portfolio</a>
+  <a class="nav-name" href="portfolio.html">Research & Design Portfolio</a>
+</nav>
+
+<div class="hero fade-in">
+  <p class="hero-label">HCI Research · Master's Thesis · Tufts University · 2026</p>
+  <h1 class="hero-title">Exploring Fulfillment<br>in <em>MMORPGs</em></h1>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-key">Role</span><span class="meta-val">Principal Investigator</span></div>
+    <div class="meta-item"><span class="meta-key">Advisor</span><span class="meta-val">Dave Bryan Miller</span></div>
+    <div class="meta-item"><span class="meta-key">Framework</span><span class="meta-val">Self-Determination Theory</span></div>
+    <div class="meta-item"><span class="meta-key">Games</span><span class="meta-val">WoW · FFXIV · GW2 · ESO</span></div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Overview</h2>
+  <p>Massively multiplayer online role-playing games (MMORPGs) offer uniquely complex digital environments where players pursue goals alongside others, form social groups, role-play as characters, and achieve a sense of fulfillment. This study pursues three aims: to explore how MMORPGs satisfy the psychological needs of players, to identify what motivations underlie that satisfaction, and to examine how players engage with in-game activities to fulfill those needs across titles.</p>
+  <p>The study is grounded in <strong>Self-Determination Theory (Ryan & Deci, 2000)</strong>, which proposes that the satisfaction of innate psychological needs for <strong>autonomy</strong> (freedom of choice), <strong>competency</strong> (mastery and growth), and <strong>relatedness</strong> (social connection) supports the development of intrinsic motivation. Psychological need satisfaction was operationalized using the <strong>Ubisoft Perceived Experience Questionnaire (UPEQ)</strong> — a validated SDT-based instrument adapted for video game contexts.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-number">158</div><div class="stat-label">Survey respondents</div></div>
+    <div class="stat-card"><div class="stat-number">18</div><div class="stat-label">Interview participants</div></div>
+    <div class="stat-card"><div class="stat-number">4</div><div class="stat-label">MMORPGs studied</div></div>
+    <div class="stat-card"><div class="stat-number">4</div><div class="stat-label">Player profiles identified</div></div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Method</h2>
+  <h3>Game Selection</h3>
+  <p>Four established MMORPGs were selected to capture a range of design philosophies: <strong>World of Warcraft</strong> represents the traditional theme-park MMO with structured vertical progression and large-scale raids. <strong>Final Fantasy XIV</strong> integrates cinematic storytelling with highly structured cooperative encounters. <strong>Guild Wars 2</strong> emphasizes dynamic world events and flexible horizontal progression. <strong>Elder Scrolls Online</strong> prioritizes open exploration and player autonomy through a highly customizable character system.</p>
+
+  <h3>Survey</h3>
+  <p>The survey took 5–10 minutes and included a consent section, demographic questions, and the 21-item UPEQ. At the start, respondents selected one of the four games to focus their responses on. Each item was rated on a 5-point Semantic Differential scale. Subscale scores were calculated as the mean of items per need dimension, then rescaled to fall between 0 and 1 for comparison. Participants were required to be over 18, located in the United States, and to have over 80 hours of play in their selected game. Participants were recruited through MMORPG-focused subreddits.</p>
+
+  <h3>Interviews</h3>
+  <p>18 participants were recruited from the survey sample for semi-structured remote interviews lasting 30–40 minutes. Participants were asked about their history with video games, what drew them to their chosen MMORPG, and what aspects of their play contributed to their sense of autonomy, competency, and relatedness. Questions were open-ended, with follow-up probes across need dimensions. Recordings were transcribed and coded independently by both a PI and an RA; agreement was evaluated using Cohen's kappa, which indicated substantial agreement across all three subscales (κ = 0.74–0.78).</p>
+
+  <div class="tag-list">
+    <span class="tag">UPEQ Survey</span>
+    <span class="tag">Semi-Structured Interviews</span>
+    <span class="tag">Thematic Analysis</span>
+    <span class="tag">K-Means Clustering</span>
+    <span class="tag">Random Forest Regression</span>
+    <span class="tag">Kruskal-Wallis</span>
+    <span class="tag">One-Way ANOVA</span>
+    <span class="tag">Fisher's Exact Test</span>
+    <span class="tag">Cohen's Kappa</span>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Key Findings</h2>
+
+  <h3>How psychological needs interact</h3>
+  <p>Three random forest regression models were built to examine relationships between autonomy, competency, and relatedness. <strong>Relatedness explained the greatest variance</strong> (R² = 16.42%), suggesting it occupies a central role in the structure of need satisfaction in MMORPGs. Across all three models, the game selected and the other two subscales all contributed meaningfully to prediction — indicating that both individual dispositions and game design shape psychological experience.</p>
+
+  <h3>How need satisfaction differs by game</h3>
+  <p>A one-way ANOVA revealed a <strong>significant difference in relatedness scores across games</strong>, F(3, 154) = 5.88, p = 0.00079. Tukey HSD post-hoc comparisons found a significant difference between <strong>Final Fantasy XIV</strong> (M = 0.80) and <strong>Elder Scrolls Online</strong> (M = 0.68) — consistent with FFXIV's cooperative quest structure requiring sustained group coordination, compared to ESO's highly solo-friendly design. Autonomy and competency scores did not differ significantly across games.</p>
+
+  <div class="callout">
+    <p>The game a player chooses was the strongest predictor of relatedness satisfaction — stronger than autonomy or competency — suggesting that MMORPG design features, not just individual player disposition, shape social fulfillment.</p>
+  </div>
+
+  <h3>Clustering player types</h3>
+  <p>K-means clustering on standardized autonomy, competency, and relatedness scores identified a <strong>four-cluster solution</strong> as optimal. One-way ANOVAs confirmed clusters differed significantly on all three need dimensions (all p &lt; 0.001). A Fisher's Exact Test examining player type distribution across games approached significance (p = 0.053), suggesting game design may attract distinct player types — though small within-game sample sizes limited statistical power.</p>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Player Profiles</h2>
+  <p>Interview data was used to build qualitative profiles corresponding to each cluster, connecting quantitative need satisfaction levels to the motivations and behaviors that characterize each type.</p>
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <p class="profile-name">Sociable Casual Player</p>
+      <p class="profile-score">Autonomy</p>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:57%"></div></div>
+      <p class="profile-score">Competency</p>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:89%"></div></div>
+      <p class="profile-score">Relatedness</p>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:65%"></div></div>
+      <p class="profile-desc">Finds fulfillment through guild membership and group achievements. Their sense of competency is reinforced by contributing to raids and dungeons alongside people they've built real friendships with. (n = 39)</p>
+    </div>
+    <div class="profile-card">
+      <p class="profile-name">Solo Explorer</p>
+      <p class="profile-score">Autonomy</p>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:87%"></div></div>
+      <p class="profile-score">Competency</p>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:92%"></div></div>
+      <p class="profile-score">Relatedness</p>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:65%"></div></div>
+      <p class="profile-desc">Highest autonomy of any cluster. Prioritizes breadth of experience and self-directed exploration over achievement benchmarks. Engages socially only when convenient or mandatory. (n = 35)</p>
+    </div>
+    <div class="profile-card">
+      <p class="profile-name">Solo Role Player</p>
+      <p class="profile-score">Autonomy</p>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:68%"></div></div>
+      <p class="profile-score">Competency</p>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:64%"></div></div>
+      <p class="profile-score">Relatedness</p>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:57%"></div></div>
+      <p class="profile-desc">Deeply invested in building a coherent avatar narrative and lore-accurate appearance. Deprioritizes external achievement metrics; fulfillment comes from internal storytelling and world immersion. (n = 21)</p>
+    </div>
+    <div class="profile-card">
+      <p class="profile-name">Sociable High Achiever</p>
+      <p class="profile-score">Autonomy</p>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:78%"></div></div>
+      <p class="profile-score">Competency</p>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:91%"></div></div>
+      <p class="profile-score">Relatedness</p>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:85%"></div></div>
+      <p class="profile-desc">Largest cluster. Completionist mentality, structured goal-directed play, and deep investment in guild community. High-difficulty cooperative content is both the primary source of competency and relatedness. (n = 63)</p>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Discussion Highlights</h2>
+
+  <h3>MMORPGs as third places</h3>
+  <p>Multiple participants across clusters described using MMORPGs to escape loneliness and maintain friendships across distance. This social function mirrors what sociologist Ray Oldenburg termed the "third place" — informal gathering spaces outside the home and workplace where voluntary participation and relatively flat social hierarchies enable connection. For many players, the game functions as a persistent, accessible community that the physical world does not always provide.</p>
+
+  <h3>Accessible gaming for the visually impaired</h3>
+  <p>One interview participant with low vision — Sara Beth Winters, a FFXIV player of seven years and accessibility consultant — provided a rich account of how spatial audio, boss sound design, and UI text scaling enable her to participate in guild-based cooperative content. Her profile mapped firmly to the Sociable High Achiever cluster, meaning that accessibility barriers she encounters — particularly in solo duties with insufficient audio cues — directly block the pathway through which all three of her psychological needs are met.</p>
+
+  <h3>Limitations</h3>
+  <p>The sample skews toward active Reddit users and players who have invested over 80 hours, excluding those who disengaged from a game. ESO players comprise 46% of the sample, limiting the generalizability of overall findings. The UPEQ was validated primarily on action and shooter titles rather than MMORPGs specifically. Motivations and need satisfaction were captured at a single point in time — SDT acknowledges that these shift with life circumstances.</p>
+</div>
+
+<footer>
+  <span>Kieu Anh Hong · Research & Design Portfolio</span>
+  <a href="portfolio.html" style="color:var(--ink-light);text-decoration:none;font-size:0.78rem;letter-spacing:0.05em;">← Back to portfolio</a>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); },
+    { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SeeDegree · Kieu Anh Hong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F9F8F5; --ink: #18180F; --ink-mid: #5C5C50; --ink-light: #9C9C8E;
+    --accent: #7B5EA7; --border: rgba(24,24,15,0.10);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Figtree', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.7; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(249,248,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 60px; }
+  .nav-back { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--ink); }
+  .nav-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; text-decoration: none; color: var(--ink); }
+  .hero { padding: 10vh 5vw 7vh; max-width: 900px; margin: 0 auto; }
+  .hero-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1.2rem; }
+  .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 300; line-height: 1.1; margin-bottom: 2rem; }
+  .hero-title em { font-style: italic; color: var(--ink-mid); }
+  .hero-meta { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .meta-key { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); }
+  .meta-val { font-size: 0.9rem; color: var(--ink-mid); }
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 0 5vw; }
+  .content { padding: 5rem 5vw; max-width: 900px; margin: 0 auto; }
+  h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; }
+  h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.8rem; margin-top: 2rem; }
+  h3:first-child { margin-top: 0; }
+  p { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.85; margin-bottom: 1.2rem; }
+  p strong { font-weight: 500; color: var(--ink); }
+  .callout { border-left: 2px solid var(--accent); padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(123,94,167,0.04); border-radius: 0 4px 4px 0; }
+  .callout p { margin-bottom: 0; font-size: 0.92rem; }
+  .phase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; border: 1px solid var(--border); margin: 2rem 0; }
+  .phase-card { padding: 2rem; background: var(--bg); border: 1px solid var(--border); }
+  .phase-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+  .phase-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 1rem; }
+  .phase-desc { font-size: 0.88rem; color: var(--ink-mid); line-height: 1.75; }
+  .phase-desc strong { font-weight: 500; color: var(--ink); }
+  .method-list { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--border); margin: 2rem 0; }
+  .method-row { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; padding: 1.1rem 1.5rem; background: var(--bg); border: 1px solid var(--border); align-items: start; }
+  .method-name { font-size: 0.82rem; font-weight: 500; color: var(--ink); }
+  .method-desc { font-size: 0.85rem; color: var(--ink-mid); line-height: 1.65; }
+  .screens-side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+  .screen-wrap { }
+  .screen-wrap img { width: 100%; border-radius: 16px; border: 1px solid var(--border); display: block; object-fit: contain; background: #fff; }
+  .screen-caption { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); margin-top: 0.7rem; text-align: center; }
+  .tag { font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 1rem; background: rgba(24,24,15,0.05); color: var(--ink-mid); }
+  footer { border-top: 1px solid var(--border); padding: 2rem 5vw; display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; font-size: 0.78rem; color: var(--ink-light); letter-spacing: 0.05em; }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 680px) { .phase-grid { grid-template-columns: 1fr; } .method-row { grid-template-columns: 1fr; gap: 0.3rem; } .screens-side-by-side { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="portfolio.html">← Portfolio</a>
+  <a class="nav-name" href="portfolio.html">Research & Design Portfolio</a>
+</nav>
+
+<div class="hero fade-in">
+  <p class="hero-label">UX Design · SeeYesCorp · 2024</p>
+  <h1 class="hero-title">SeeDegree —<br><em>Academic Survey Redesign</em></h1>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-key">Role</span><span class="meta-val">UX Researcher & Designer</span></div>
+    <div class="meta-item"><span class="meta-key">Client</span><span class="meta-val">SeeYesCorp</span></div>
+    <div class="meta-item"><span class="meta-key">Product</span><span class="meta-val">SeeDegree — web-based survey tool</span></div>
+    <div class="meta-item"><span class="meta-key">Users</span><span class="meta-val">College students & academic advisors</span></div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Overview</h2>
+  <p>SeeYesCorp is an education technology company specializing in tools that enhance the academic experience. Their flagship product, <strong>SeeDegree</strong>, is a web-based survey tool designed to streamline academic processes for college students — targeting the organization of major requirements, academic planning, and personal development tracking.</p>
+  <p>I worked on the SeeDegree project as part of a UX research and design team. The sponsors felt the existing survey was too "paper-based" and wanted an experience that would <strong>spur more engagement from college students</strong> while helping advisors gain genuine insight into student needs and goals. The project ran in two phases, each addressing a different aspect of that challenge.</p>
+
+  <div class="tag-list">
+    <span class="tag">CLIMBER Analysis</span>
+    <span class="tag">Personas</span>
+    <span class="tag">Usability Testing</span>
+    <span class="tag">Concept Testing</span>
+    <span class="tag">Surveying</span>
+    <span class="tag">Prototyping</span>
+    <span class="tag">Figma</span>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Research &amp; Methods</h2>
+
+  <div class="method-list">
+    <div class="method-row">
+      <span class="method-name">CLIMBER Analysis</span>
+      <p class="method-desc">Used to systematically evaluate the existing SeeDegree survey across usability heuristics. Identified structural issues with question format, cognitive load, and engagement — providing a structured baseline for redesign decisions.</p>
+    </div>
+    <div class="method-row">
+      <span class="method-name">Personas</span>
+      <p class="method-desc">Developed personas to represent the range of college student users the survey serves — capturing differences in academic situation, engagement level, and relationship with academic advising. Personas grounded design decisions in real user contexts.</p>
+    </div>
+    <div class="method-row">
+      <span class="method-name">Usability Testing</span>
+      <p class="method-desc">Multiple rounds of usability testing were conducted on the original survey and on design iterations. Sessions surfaced specific friction points in question flow, answer format, and completion time that guided the phase one redesign.</p>
+    </div>
+    <div class="method-row">
+      <span class="method-name">Concept Testing</span>
+      <p class="method-desc">The chatbot flow concept (phase two) was tested before full development through concept testing sessions where participants reacted to the proposed interaction model. This confirmed appetite for the conversational format before investment in detailed prototyping.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Design Phases</h2>
+
+  <div class="phase-grid">
+    <div class="phase-card">
+      <p class="phase-label">Phase One</p>
+      <p class="phase-title">Streamlining the survey</p>
+      <p class="phase-desc">The first challenge was the survey's fundamental usability. Sponsors described it as feeling <strong>too paper-based</strong> — long, open-ended, and effortful in a way that discouraged honest or thoughtful completion.<br><br>Following multiple rounds of usability testing of the original survey alongside design iterations, the team finalized a redesign that <strong>reduces completion time</strong> by replacing open-ended short-answer questions with structured multiple-choice questions that retain an option to elaborate. This lowered the effort barrier for students while preserving the depth of information advisors needed.</p>
+    </div>
+    <div class="phase-card">
+      <p class="phase-label">Phase Two</p>
+      <p class="phase-title">Chatbot flow</p>
+      <p class="phase-desc">In discussions with sponsors about making the survey more interactive, the team proposed integrating a <strong>chatbot flow</strong> as an alternative to the standard survey format. Instead of working through a list of questions, students talk through or type their answers as though having a conversation.<br><br>Since SeeDegree's purpose is to build understanding between students and their advisors, the chatbot flow was designed to encourage students to <strong>respond more honestly and thoughtfully</strong> — the personalized format reducing the sense of performance that a traditional survey can create. Students can answer by typing or by holding down a button to record a spoken response.</p>
+    </div>
+  </div>
+
+  <div class="screens-side-by-side">
+    <div class="screen-wrap">
+      <img src="screens/seedegree_p0_0.jpeg" alt="SeeDegree Phase 1 — streamlined survey">
+      <p class="screen-caption">Phase 1 — structured survey</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/seedegree_p0_1.jpeg" alt="SeeDegree Phase 2 — chatbot flow">
+      <p class="screen-caption">Phase 2 — chatbot flow</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p>The two phases addressed the same underlying problem from different angles: phase one reduced friction in the existing format; phase two asked whether the format itself was the right one for the goal of genuine student-advisor understanding.</p>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="content fade-in">
+  <h2>Key Design Decisions</h2>
+
+  <h3>Multiple choice with elaboration option</h3>
+  <p>Replacing open-ended questions with structured multiple-choice significantly reduced cognitive load and time-on-task. The option to elaborate preserved depth for students who wanted to provide context, without penalizing those who found the open-ended format daunting. Usability testing confirmed that students completed the redesigned survey faster and with fewer drop-offs.</p>
+
+  <h3>Conversational input for sensitive topics</h3>
+  <p>Certain survey sections — particularly those touching on personal strengths, goals, and challenges — felt uncomfortable in a clinical survey format. The chatbot flow reframes these questions as dialogue, reducing the evaluative framing and inviting more genuine responses. Spoken input was included as an option because it more naturally supports reflective, narrative-style answers that the survey questions call for.</p>
+
+  <h3>Progress visibility</h3>
+  <p>Both redesigns maintained clear progress indicators throughout the survey experience — communicating how far along students are and setting expectations about completion time. Usability testing consistently surfaced that uncertainty about survey length was a driver of disengagement.</p>
+</div>
+
+<footer>
+  <span>Kieu Anh Hong · Research & Design Portfolio</span>
+  <a href="portfolio.html" style="color:var(--ink-light);text-decoration:none;font-size:0.78rem;letter-spacing:0.05em;">← Back to portfolio</a>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); },
+    { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
