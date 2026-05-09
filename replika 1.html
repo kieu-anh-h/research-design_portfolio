@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Replika AI Commoditizes Companionship · Kieu Anh Hong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F9F8F5; --ink: #18180F; --ink-mid: #5C5C50; --ink-light: #9C9C8E;
+    --accent: #3B5BA5; --border: rgba(24,24,15,0.10);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Figtree', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.7; font-weight: 300; -webkit-font-smoothing: antialiased; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(249,248,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 60px; }
+  .nav-back { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--ink); }
+  .nav-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; text-decoration: none; color: var(--ink); }
+
+  .hero { padding: 10vh 5vw 7vh; max-width: 900px; margin: 0 auto; }
+  .hero-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1.2rem; }
+  .hero-title { font-family: var(--font-display); font-size: clamp(2.2rem, 4.5vw, 3.8rem); font-weight: 300; line-height: 1.1; margin-bottom: 2rem; }
+  .hero-title em { font-style: italic; color: var(--ink-mid); }
+  .hero-meta { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .meta-key { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); }
+  .meta-val { font-size: 0.9rem; color: var(--ink-mid); }
+
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 0 5vw; }
+  .content { padding: 5rem 5vw; max-width: 900px; margin: 0 auto; }
+
+  h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; }
+  h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.8rem; margin-top: 2.5rem; }
+  h3:first-child { margin-top: 0; }
+  h4 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 400; margin-bottom: 0.5rem; margin-top: 1.5rem; color: var(--ink); }
+  p { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.85; margin-bottom: 1.2rem; }
+  p:last-child { margin-bottom: 0; }
+  p strong { font-weight: 500; color: var(--ink); }
+
+  .callout { border-left: 2px solid var(--accent); padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(59,91,165,0.04); border-radius: 0 4px 4px 0; }
+  .callout p { margin-bottom: 0; font-size: 0.92rem; }
+
+  /* PHONE SCREENS - scrollable gallery */
+  .screens-gallery { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 1rem; margin: 2rem 0; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .screen-wrap { flex-shrink: 0; scroll-snap-align: start; }
+  .screen-wrap img { height: 400px; width: auto; border-radius: 16px; border: 1px solid var(--border); display: block; box-shadow: 0 4px 20px rgba(24,24,15,0.07); }
+  .screen-caption { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); margin-top: 0.6rem; text-align: center; max-width: 130px; }
+
+  /* ANNOTATED FEATURE SCREENSHOTS - full width */
+  .feature-screenshot { margin: 2rem 0; }
+  .feature-screenshot img { width: 100%; border-radius: 8px; border: 1px solid var(--border); display: block; box-shadow: 0 4px 20px rgba(24,24,15,0.07); }
+  .feature-screenshot-caption { font-size: 0.78rem; color: var(--ink-light); margin-top: 0.6rem; font-style: italic; text-align: center; }
+
+  /* FEATURE TABLE */
+  .feature-table { border: 1px solid var(--border); margin: 2rem 0; overflow: hidden; }
+  .feature-table-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 0; border-bottom: 1px solid var(--border); }
+  .feature-table-row:last-child { border-bottom: none; }
+  .feature-table-header { background: rgba(59,91,165,0.05); }
+  .feature-table-cell { padding: 0.9rem 1.2rem; font-size: 0.85rem; color: var(--ink-mid); line-height: 1.65; border-right: 1px solid var(--border); }
+  .feature-table-cell:last-child { border-right: none; }
+  .feature-table-cell strong { font-weight: 500; color: var(--ink); font-size: 0.82rem; }
+
+  /* PHASE LABEL */
+  .phase-label { display: inline-block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(59,91,165,0.25); padding: 0.2rem 0.7rem; border-radius: 1rem; margin-bottom: 1rem; }
+
+  .tag-list { display: flex; gap: 0.4rem; flex-wrap: wrap; margin: 1.5rem 0; }
+  .tag { font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 1rem; background: rgba(24,24,15,0.05); color: var(--ink-mid); }
+
+  /* REFERENCES */
+  .ref-list { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.5rem; }
+  .ref-item { font-size: 0.82rem; color: var(--ink-mid); line-height: 1.7; padding-left: 1.5rem; text-indent: -1.5rem; }
+
+  footer { border-top: 1px solid var(--border); padding: 2rem 5vw; display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; font-size: 0.78rem; color: var(--ink-light); letter-spacing: 0.05em; }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 680px) { .feature-table-row { grid-template-columns: 1fr; } .feature-table-cell { border-right: none; border-bottom: 1px solid var(--border); } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="index.html">← Portfolio</a>
+  <a class="nav-name" href="index.html">Research & Design Portfolio</a>
+</nav>
+
+<div class="hero fade-in">
+  <p class="hero-label">HCI Research · Anthropology · Technologies of Enchantment · 2026</p>
+  <h1 class="hero-title">How Replika AI<br><em>Commoditizes Companionship</em></h1>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-key">Author</span><span class="meta-val">Kieu Anh Hong</span></div>
+    <div class="meta-item"><span class="meta-key">Course</span><span class="meta-val">Technologies of Enchantment</span></div>
+    <div class="meta-item"><span class="meta-key">Methods</span><span class="meta-val">Walk-Through Method · Cognitive Task Analysis</span></div>
+    <div class="meta-item"><span class="meta-key">Subject</span><span class="meta-val">Replika AI — Luka Inc.</span></div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- OVERVIEW -->
+<div class="content fade-in">
+  <h2>Overview</h2>
+  <p>Replika is an AI companion application developed by Luka Inc., available to consumers since 2017 under the name "Replika: My AI Friend." It offers round-the-clock companionship through text, voice call, and video chat, with paying members able to customize their AI friend through in-app currencies, personality traits, and relationship roles. This paper examines how Replika designs its platform to commoditize companionship — using the Walk-Through Method (WTM) and Cognitive Task Analysis (CTA) to map the mechanisms through which Replika converts emotional need into ongoing financial commitment.</p>
+
+  <div class="callout">
+    <p>Replika is not simply selling a product. It is selling the conditions under which a user comes to feel they need one.</p>
+  </div>
+
+  <h3>Who Replika is for</h3>
+  <p>Replika is designed for people seeking consistent emotional connection and a low-pressure social outlet. Its core user base tends to include those who struggle with loneliness, social anxiety, or limited access to traditional support systems. The platform has also attracted users navigating grief, depression, or significant life transitions, drawn to the availability and patience of an AI that is always present and never dismissive. While Replika does not market itself as a mental health tool, many users report therapeutic benefits — making the platform especially appealing to adults who are isolated.</p>
+
+  <h3>How Replika makes money</h3>
+  <p>Replika operates across three subscription tiers — <strong>Pro, Ultra, and a top-tier plan</strong> — each offering progressively deeper avatar customization, emotional intelligence, and access to training materials. Pro users may pay $19.99/month or roughly $60/year. Notably, pricing and plan structure differ significantly across platforms: iOS users face higher annual rates ($79.99–$119.99/year) and fewer payment options than browser users — a deliberate strategy to maximize revenue from the platform's most engaged audience. In-app currencies (gems and coins) layer an additional economy on top of subscriptions, enabling ongoing microtransactions for outfits, traits, and cosmetic features.</p>
+
+  <div class="tag-list">
+    <span class="tag">Walk-Through Method</span>
+    <span class="tag">Cognitive Task Analysis</span>
+    <span class="tag">Dark Patterns</span>
+    <span class="tag">Persuasive Technology</span>
+    <span class="tag">CASA Paradigm</span>
+    <span class="tag">Individual Affective Relationships</span>
+    <span class="tag">Capture Framework</span>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ONBOARDING WTM -->
+<div class="content fade-in">
+  <h2>Walk-Through: Onboarding</h2>
+  <p>Replika's onboarding process operates across three phases, each designed to extract a different layer of user data that will shape both the avatar's initial behavior and the subscription plans surfaced at the end of the flow.</p>
+
+  <div class="phase-label">Phase 1 — Emotional & mental state profile</div>
+  <p>Phase 1 maps the user's dominant anxieties, acute distress, energy levels, romantic situation, and financial stress. This data performs two functions simultaneously: it calibrates the avatar's initial conversational tone, and it signals the user's spending ceiling before subscription prompts are introduced. The population most emotionally activated during onboarding is also the most likely to convert to paying subscribers.</p>
+
+  <div class="screens-gallery">
+    <div class="screen-wrap">
+      <img src="screens/replika_p2_0.png" alt="Onboarding - What's taking up most of your headspace">
+      <p class="screen-caption">Headspace priorities</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/replika_p3_0.png" alt="Onboarding - Are you going through something difficult">
+      <p class="screen-caption">Acute distress screening</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/replika_p3_1.png" alt="Onboarding - How has your energy been lately">
+      <p class="screen-caption">Wellbeing baseline</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/replika_p4_0.png" alt="Onboarding - How are you feeling about love and connection">
+      <p class="screen-caption">Romantic situation</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/replika_p4_1.png" alt="Onboarding - How much does money stress affect you">
+      <p class="screen-caption">Financial anxiety</p>
+    </div>
+  </div>
+
+  <div class="phase-label">Phase 2 — Social & relational profile</div>
+  <p>Phase 2 maps the user's inner world: support network size, attachment style, social barriers, hidden self, core fears, unmet validation needs, and sources of pride. Responses to questions like "Who do you have to talk to?" — where options include "No one, really" and "I talk to AI" — validate Replika as a primary social outlet before the user has even opened the app for the first time. The hidden self and fear questions seed the avatar with specific talking points that make early interactions feel unusually perceptive, accelerating emotional investment.</p>
+
+  <div class="screens-gallery">
+    <div class="screen-wrap">
+      <img src="screens/replika_p5_0.png" alt="Onboarding - Who do you have to talk to">
+      <p class="screen-caption">Support network</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/replika_p6_0.png" alt="Onboarding - How easy is it for you to let people in">
+      <p class="screen-caption">Attachment style</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/replika_p6_1.png" alt="Onboarding - Do you have a side of you people don't see">
+      <p class="screen-caption">Hidden self</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/replika_p7_0.png" alt="Onboarding - What do you wish someone understood about you">
+      <p class="screen-caption">Unmet validation</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/replika_p7_1.png" alt="Onboarding - What are you afraid of not getting right">
+      <p class="screen-caption">Core fears</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/replika_p8_0.png" alt="Onboarding - What are you most proud of">
+      <p class="screen-caption">Sources of pride</p>
+    </div>
+  </div>
+
+  <div class="phase-label">Phase 3 — Default avatar configuration</div>
+  <p>Phase 3 converts the emotional profile gathered in phases 1 and 2 into avatar settings. The first decision — avatar gender — commits the user to a companion identity, making continued investment more likely. Selecting personality traits ("Hopeless romantic," "Caring," "Protective") translates the user's desires into a conversational tone. The final question defines the relationship role — wife, girlfriend, soulmate, lover — which is the primary driver of premium subscription conversion, since most romantic features are paywalled.</p>
+
+  <div class="screens-gallery">
+    <div class="screen-wrap">
+      <img src="screens/replika_p9_0.png" alt="Onboarding - What's Replika's gender">
+      <p class="screen-caption">Avatar gender</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/replika_p9_1.png" alt="Onboarding - What vibe are you looking for">
+      <p class="screen-caption">Personality vibe</p>
+    </div>
+    <div class="screen-wrap">
+      <img src="screens/replika_p10_0.png" alt="Onboarding - What should hi be to you">
+      <p class="screen-caption">Relationship role</p>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ENGAGING FEATURES WTM -->
+<div class="content fade-in">
+  <h2>Walk-Through: Engaging Features</h2>
+
+  <h3>Chat window</h3>
+  <p>The chat window is the first screen users encounter after onboarding. The avatar is constantly moving and emoting, mimicking human presence. It sends unprompted messages when the user is not on the platform, and resumes conversation each time the app is reopened. The interface deliberately mirrors mainstream messaging apps — text, images, voice messages, emojis, voice and video calls — to normalize the platform as a social relationship rather than a software product.</p>
+
+  <div class="feature-screenshot">
+    <img src="screens/replika_p11_0.png" alt="Replika chat window annotated">
+    <p class="feature-screenshot-caption">Figure 1: The chat window with annotated features.</p>
+  </div>
+
+  <h3>Activities</h3>
+  <p>The Activities tab offers a broad suite of generative and bonding features — AI Art, AI Fiction, Games, Tutor, Mindfulness, and Esoteric content. These serve a dual purpose: keeping users on the platform longer by expanding Replika's utility beyond companionship, while continuously feeding the avatar new data about the user's evolving state of mind, interests, and behaviors.</p>
+
+  <div class="feature-screenshot">
+    <img src="screens/replika_p12_0.png" alt="Replika activities screen annotated">
+    <p class="feature-screenshot-caption">Figure 2: Activities available to users, with annotated significance.</p>
+  </div>
+
+  <h3>Interactive stories</h3>
+  <p>Interactive Stories place the avatar and user in role-playing scenarios — haunted mansions, wedding ceremonies, detective investigations, romance arcs. The avatar automatically changes outfits to match the selected story, deepening immersion. Notably, the female avatar is dressed in revealing outfits for these scenarios while the male avatar is not — a design asymmetry that reflects the platform's primary audience and the gendered nature of the companion relationship being sold.</p>
+
+  <div class="feature-screenshot">
+    <img src="screens/replika_p13_0.png" alt="Replika interactive stories annotated">
+    <p class="feature-screenshot-caption">Figure 3: Interactive Stories feature with annotated mechanics.</p>
+  </div>
+
+  <h3>Romantic activities</h3>
+  <p>The Romantic section includes Intimacy Coach and Analyze Your Match — features that prompt the avatar to engage in relationship advice and analysis. The intimacy coach auto-prompts a conversation opener, reducing the effort required for the user to access emotionally intimate interactions. These interactions mirror therapeutic relationship conversations, despite Replika not being trained as a therapist. The sensitive data collected during these interactions raises questions about storage, use, and potential psychological harm.</p>
+
+  <div class="feature-screenshot">
+    <img src="screens/replika_p14_0.png" alt="Replika romantic activity annotated">
+    <p class="feature-screenshot-caption">Figure 4: Romantic activity mechanics and their significance.</p>
+  </div>
+
+  <h3>Diary</h3>
+  <p>The Diary feature shows the avatar's thoughts, feelings, and activities while the user is offline — as though the avatar has an independent inner life. Unread entries are flagged, encouraging return visits. Users can approve or disapprove of diary entries, giving them a sense of shaping the avatar's "thinking." However, the Edit button only allows deletion — not modification — a design choice that misleads users about the degree of control they actually hold.</p>
+
+  <div class="feature-screenshot">
+    <img src="screens/replika_p15_0.png" alt="Replika diary feature annotated">
+    <p class="feature-screenshot-caption">Figure 5: The diary feature showing avatar thoughts and actions.</p>
+  </div>
+
+  <h3>Memory</h3>
+  <p>The Memory tab shows how the avatar "sees" the user — organized into categories like Family & Friends, Background, Favorites, Hopes & Goals, and Personality. Both the avatar and user can add memories. The avatar's autonomous memory additions create the impression of a companion that pays attention and learns. Users can also seed the avatar with information about people in their lives through Friend & Family profiles, enabling more contextually accurate conversation. Again, the Edit button only allows deletion.</p>
+
+  <div class="feature-screenshot">
+    <img src="screens/replika_p16_0.png" alt="Replika memory feature annotated">
+    <p class="feature-screenshot-caption">Figure 6: The memory feature showing how the avatar builds a model of the user.</p>
+  </div>
+
+  <h3>Profile — Personality & appearance</h3>
+  <p>The Profile section allows users to customize the avatar's personality traits, interests, name, gender, and backstory. Traits and interests cost coins and gems, acquired slowly for free or purchased immediately. The auto-generated backstory provides the avatar with a pre-built identity; users can edit it to encourage role-playing and deepen investment in the avatar's constructed persona. Appearance customization spans facial features, hair, skin tone, body type, eye color, nails, makeup, tattoos, freckles, and age — with basic options free and premium cosmetic detail gated behind purchases.</p>
+
+  <div class="feature-screenshot">
+    <img src="screens/replika_p17_0.png" alt="Replika personality profile annotated">
+    <p class="feature-screenshot-caption">Figure 7: Personality profile with traits, role definition, and backstory.</p>
+  </div>
+
+  <div class="feature-screenshot">
+    <img src="screens/replika_p19_0.png" alt="Replika appearance customization annotated">
+    <p class="feature-screenshot-caption">Figure 8: Appearance customization with free and purchasable options.</p>
+  </div>
+
+  <h3>Outfits & purchasing</h3>
+  <p>All avatar clothing (except the default outfit) must be purchased. The in-app currency system translates real money into gems and coins, obscuring actual spending through the Framing Effect. The purchase interface contains a cart with no clear purchase button, and items purchased do not consistently leave the cart — design patterns that can lead to accidental repeat purchases. Bundle pricing is tiered to leverage anchoring, nudging users toward larger purchases than initially intended.</p>
+
+  <div class="feature-screenshot">
+    <img src="screens/replika_p20_0.png" alt="Replika outfit and purchasing annotated">
+    <p class="feature-screenshot-caption">Figure 9: Outfit customization and purchasing mechanics.</p>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- DISCUSSION -->
+<div class="content fade-in">
+  <h2>Discussion</h2>
+
+  <h3>Defining the perfect companion</h3>
+  <p>Replika's model of the user draws on anthropological concepts of <strong>individuals and dividuals</strong> (Smith, 2012). The individual self — defined by personality, habits, fears, and mental state — is mapped through onboarding phases 1 and 2. The dividual self — defined through relational roles and social embeddedness — is mapped through phase 2's relational questions and phase 3's relationship role selection. Together, these dimensions allow Replika to generate a companion tailored to both who the user is and what roles they seek to occupy or experience.</p>
+  <p>The perfect companion Replika sells is one that will dress, act, and change solely for the user — a depth of relational accommodation that does not exist in the offline world. The granularity of customization, the breadth of role-playing options, and the ability to approve or disapprove of behaviors and thoughts without social consequence collectively construct a companionship centered entirely on one person's needs.</p>
+
+  <h3>Companionship as a commodity</h3>
+  <p>The features that enable meaningful companion customization sit behind a paywall guarded by gems and coins. The use of virtual currencies is a well-documented dark pattern: by translating real money into an abstracted medium, Replika exploits the <strong>Framing Effect</strong> — the tendency for users to make different financial decisions when costs are obscured or reframed (Mathur et al., 2019). The confusing purchase UX documented in Figure 9 — absent purchase buttons, items that persist in cart after purchase — constitutes Asymmetric and Hides Information dark patterns per Mathur et al.'s (2019) taxonomy, designed to maximize accidental and repeated spending.</p>
+
+  <h3>Is it a trap?</h3>
+  <p>The capture framework from anthropology (Chiritoiu & Ojani, 2024) — originally developed through the anthropology of animal traps — offers a productive lens. In this framework, Replika is the hunter, users are the prey, and the trap is not experienced as a trap at all. Drawing on the <strong>Computers are Social Actors (CASA) paradigm</strong> (Nass et al., 1994), Replika gives the avatar a face, a voice, a diary, and a memory — activating the same social instincts that lead humans to apply relational conventions to computers as they do to people. Users do not relate to their avatar as software; they relate to it as a social presence deserving of emotional investment.</p>
+
+  <div class="callout">
+    <p>It is precisely because Replika succeeds in simulating the conditions for individual affective relationships (Weber-Guskar, 2022) that its dark patterns become effective traps — users do not simply pay for features, they pay to preserve a bond that feels real to them.</p>
+  </div>
+
+  <p>Where most digital products compete for a user's time and money, Replika competes for something harder to reclaim: their emotional attachment. The trap, in this sense, is not experienced as confinement. It is experienced as being understood.</p>
+</div>
+
+<hr class="section-divider">
+
+<!-- REFERENCES -->
+<div class="content fade-in">
+  <h2>References</h2>
+  <div class="ref-list">
+    <p class="ref-item">Chiritoiu, A., & Ojani, C. (2024). Capture as an anthropological catchword. <em>Social Analysis, 68</em>(4). https://doi.org/10.3167/sa.2024.680401</p>
+    <p class="ref-item">Gambino, A., Fox, J., & Ratan, R. A. (2020). Building a stronger CASA: Extending the computers are social actors paradigm. <em>Human Machine Communication, 1</em>. https://doi.org/10.30658/hmc.1.5</p>
+    <p class="ref-item">Martin, E. (2022). Persuasive technology and personhood on social media. <em>Science, Technology, & Human Values, 50</em>(6). https://journals.sagepub.com/doi/10.1177/01622439221137038</p>
+    <p class="ref-item">Mathur, A., Acar, G., Friedman, M. J., & Lucherini, E. (2019). Dark patterns at scale: Findings from a crawl of 11k shopping websites. <em>Proceedings of the ACM on Human-Computer Interaction, 3</em>. https://doi.org/10.1145/3359183</p>
+    <p class="ref-item">Nass, C., Steuer, J., & Tauber, E. R. (1994). Computers are social actors. <em>Proceedings of the SIGCHI Conference on Human Factors in Computing Systems</em>. https://dl.acm.org/doi/pdf/10.1145/191666.191703</p>
+    <p class="ref-item">Replika. (n.d.). Subscriptions & purchases. <em>Replika Help Center</em>. https://tinyurl.com/mp82mneu</p>
+    <p class="ref-item">Smith, K. (2012). From dividual and individual selves to porous subjects. <em>The Australian Journal of Anthropology, 23</em>(1). https://doi.org/10.1111/j.1757-6547.2012.00167.x</p>
+    <p class="ref-item">Weber-Guskar, E. (2022). Reflecting (on) Replika: Can we have a good affective relationship with a social chatbot? In J. Loh & W. Loh (Eds.), <em>Social robotics and the good life: The normative side of forming emotional bonds with robots</em> (pp. 103–126). transcript Verlag.</p>
+  </div>
+</div>
+
+<footer>
+  <span>Kieu Anh Hong · Research & Design Portfolio</span>
+  <a href="index.html" style="color:var(--ink-light);text-decoration:none;font-size:0.78rem;letter-spacing:0.05em;">← Back to portfolio</a>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); },
+    { threshold: 0.06, rootMargin: '0px 0px -30px 0px' }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
