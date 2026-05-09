@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Replika AI Commoditizes Companionship · Kieu Anh Hong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F9F8F5; --ink: #18180F; --ink-mid: #5C5C50; --ink-light: #9C9C8E;
+    --accent: #3B5BA5; --border: rgba(24,24,15,0.10);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Figtree', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.7; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(249,248,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 60px; }
+  .nav-back { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--ink); }
+  .nav-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; text-decoration: none; color: var(--ink); }
+  .hero { padding: 10vh 5vw 7vh; max-width: 900px; margin: 0 auto; }
+  .hero-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1.2rem; }
+  .hero-title { font-family: var(--font-display); font-size: clamp(2.2rem, 4.5vw, 3.8rem); font-weight: 300; line-height: 1.1; margin-bottom: 2rem; }
+  .hero-title em { font-style: italic; color: var(--ink-mid); }
+  .hero-meta { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid var(--border); margin-bottom: 2rem; }
+  .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .meta-key { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); }
+  .meta-val { font-size: 0.9rem; color: var(--ink-mid); }
+  .pdf-download { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--accent); color: #fff; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: 4px; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; transition: opacity 0.2s; }
+  .pdf-download:hover { opacity: 0.85; }
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 0 5vw; }
+  .content { padding: 5rem 5vw; max-width: 900px; margin: 0 auto; }
+  h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; }
+  h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.8rem; margin-top: 2.5rem; }
+  h3:first-child { margin-top: 0; }
+  p { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.85; margin-bottom: 1.2rem; }
+  p:last-child { margin-bottom: 0; }
+  p strong { font-weight: 500; color: var(--ink); }
+  .callout { border-left: 2px solid var(--accent); padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(59,91,165,0.04); border-radius: 0 4px 4px 0; }
+  .callout p { margin-bottom: 0; font-size: 0.92rem; font-style: italic; }
+  .tag-list { display: flex; gap: 0.4rem; flex-wrap: wrap; margin: 1.5rem 0; }
+  .tag { font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 1rem; background: rgba(24,24,15,0.05); color: var(--ink-mid); }
+  .ref-list { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.5rem; }
+  .ref-item { font-size: 0.82rem; color: var(--ink-mid); line-height: 1.7; padding-left: 1.5rem; text-indent: -1.5rem; }
+  footer { border-top: 1px solid var(--border); padding: 2rem 5vw; display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; font-size: 0.78rem; color: var(--ink-light); letter-spacing: 0.05em; }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="index.html">← Portfolio</a>
+  <a class="nav-name" href="index.html">Research & Design Portfolio</a>
+</nav>
+
+<div class="hero fade-in">
+  <p class="hero-label">Anthropology · Technologies of Enchantment · 2026</p>
+  <h1 class="hero-title">How Replika AI<br><em>Commoditizes Companionship</em></h1>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-key">Author</span><span class="meta-val">Kieu Anh Hong</span></div>
+    <div class="meta-item"><span class="meta-key">Course</span><span class="meta-val">Technologies of Enchantment</span></div>
+    <div class="meta-item"><span class="meta-key">Method</span><span class="meta-val">Walk-Through Method (WTM)</span></div>
+    <div class="meta-item"><span class="meta-key">Subject</span><span class="meta-val">Replika AI — Luka Inc.</span></div>
+  </div>
+  <a href="replika-paper.pdf" download class="pdf-download">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 1v9M5 7l3 3 3-3M2 11v1a2 2 0 002 2h8a2 2 0 002-2v-1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Download full paper (PDF)
+  </a>
+</div>
+
+<hr class="section-divider">
+
+<!-- WHAT IS REPLIKA -->
+<div class="content fade-in">
+  <h2>What is Replika AI?</h2>
+  <p>Replika is developed by Luka Inc. and has been available to consumers since 2017. In Google Play you can find the application under the name "Replika: My AI Friend," which offers round the clock companionship through text, voice call, and video chat. Paying members also have the opportunity to customize their AI friend further through buying coins and diamonds that can be traded for outfits, personality traits, and interests. Users also have the opportunity to shape the perception their avatar has of them through options to store memories and define self in Replika. For users, what sets Replika apart from chatting with a more general model like Chat GPT are the ability to interact with an avatar, a visual representation of a companion, and to receive messages without prompting.</p>
+</div>
+
+<hr class="section-divider">
+
+<!-- HOW DOES REPLIKA MAKE MONEY -->
+<div class="content fade-in">
+  <h2>How does Replika AI make money?</h2>
+  <p>When first encountering Replika, users have the opportunity to interact with a default avatar for free with limited interactions (i.e., no customizations, limited texts, less emotional intelligence). For more complex interactions, the user needs to subscribe to one of three plans. The first tier is Replika Pro, which offers a full range of avatar customization (i.e., appearance, voice, outfit, personalities, and interests), the ability to change relationship status between user and avatar, and unlimited texting, voice calling, and video chatting. The next tier is Replika Ultra, which claims to be more context aware in conversations and emotionally intelligent through daily voice messages reflecting on the day's conversation and citing which memories are being referenced in conversation. The final tier offers everything the previous tiers offer with additions that allow users to access training materials for the model, read what the avatar is thinking while texting, and take more realistic selfies with their avatar.</p>
+  <p>For Replika Pro, users have the option to pay $19.99/month or ~$60/year. The subscription plans are notoriously confusing and are often a point of contention for users. Once a plan has been selected and paid for, alternate plans are hidden. On Replika's iOS application version, first time users only have access to two plans called Max (equivalent to Ultra) and Plus (equivalent to Pro). Max is billed for $119.99/year and Plus for $79.99/year, which is different from the browser version not only in price but also in a lack of the offer for monthly or a life-time payment. The lack of consistency in subscription plans across platforms appears to be a deliberate strategy to maximize revenue by tailoring pricing to each environment.</p>
+</div>
+
+<hr class="section-divider">
+
+<!-- WHO IS REPLIKA FOR -->
+<div class="content fade-in">
+  <h2>Who is Replika AI for?</h2>
+  <p>Replika is designed for people seeking consistent emotional connection and a low-pressure social outlet. Its core user base tends to include those who struggle with loneliness, social anxiety, or limited access to traditional support systems. For some, Replika serves as a space to practice conversation and self-expression without the fear of judgment. For others, it functions as a supplemental source of companionship alongside existing relationships.</p>
+  <p>The app has also attracted users navigating grief, depression, or significant life transitions, drawn to the availability and patience of an AI that is always present and never dismissive. While Replika is not a substitute for professional mental health care and does not market itself as such, many users report therapeutic benefits from the interactions. This has made the platform especially popular among adults who are isolated.</p>
+</div>
+
+<hr class="section-divider">
+
+<!-- METHODOLOGY -->
+<div class="content fade-in">
+  <h2>Methodology</h2>
+  <p>To explore how Replika commoditizes companionship, this report will employ the walk-through method (WTM) to determine how features at the Replika Pro level encourages customization of companionship and interactions with the avatar. The first part of the WTM will cover the onboarding process to consider the type of information that Replika acquires from users to match them to their AI companion. The second part of the WTM will cover features available to Replika Pro users and how those features encourage users to behave. The WTM results will be used to discuss how Replika's features commoditizes the process of creating the "perfect" companion and uses its understanding of the user's thought processes and motivations as a model for simulating bonding activities that keep users returning to and paying for Replika.</p>
+
+  <div class="tag-list">
+    <span class="tag">Walk-Through Method</span>
+    <span class="tag">Dark Patterns</span>
+    <span class="tag">Persuasive Technology</span>
+    <span class="tag">CASA Paradigm</span>
+    <span class="tag">Individual Affective Relationships</span>
+    <span class="tag">Capture Framework</span>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- DISCUSSIONS -->
+<div class="content fade-in">
+  <h2>Discussions</h2>
+
+  <h3>Defining the Perfect Companion</h3>
+  <p>Replika allows users to create and tailor a companion to their needs and desires. To meet the needs and desires of the user, Replika first learns about the user through its onboarding process. Phase 1 of onboarding aims to understand the user's mental state through their distress and energy levels, need for romantic connections, and financial security or anxiety. These facets are strategically collected to determine the immediate tone or personality trait the default avatar should take when communicating with the user as well as the user's willingness and ability to pay for subscription plans. Phase 2 is especially interesting as Replika aims to map the user's inner workings. The first question in Phase 2 asks, "Who do you have to talk to when something is on your mind?" This question probes for the user's degree of isolation and willingness to speak with AI about their troubles. The next questions probe attachment styles, social barriers, core fears, hidden self, and what the user has pride in. The final phase covers preferences the user has for the avatar's gender, personality traits, and role.</p>
+  <p>Replika's model of the user is reminiscent of anthropological concepts of dividuals and individuals. The anthropologist Karl Smith defines individuals as "something like the essential core, or spirit of a singular human being" (Smith, 2012) while the dividual is considered to be "divisible" and "socially embedded" (Smith, 2012). Replika applies both concepts of the individual and dividual interconnectedly in forming models of its users and avatars. The user's individual and dividual selves are used to generate the perfect companion through giving users control over the defining facets of their avatar's behavior and appearance to meet their individual and dividual needs.</p>
+  <p>In creating a profile of the user through mental state, need for romantic connection, financial stability or insecurity, degree of isolation, willingness to speak with AI, fears, successes, and companion preferences, Replika is able to model its AI to meet each of the needs and desires that define the user. In essence, Replika defines the perfect companion as someone or something that will dress, act, and change solely for the user. The granularity of customization, breadth of role playing opportunities, and means to disapprove or approve of behaviors and thoughts without repercussions furthers Replika's ability to create a companionship centered on one; something that perhaps does not exist in the offline world.</p>
+
+  <h3>Companionship as a Commodity</h3>
+  <p>The facets that allow a user to create their perfect adaptive companion are placed by Replika behind a paywall guarded by gems and coins. The use of gems and coins is common across many games and acts as a way to incentivize users to spend money without knowing how much they are spending. The framing of gems and coins aims to manipulate users' spending behavior, which can be understood as a dark pattern: "a catch-all term for how user interface design can be used to adversely influence users and their decision-making abilities" (Mathur et al., 2019). Based on Mathur et al. (2019)'s taxonomy of dark patterns, Replika's use of gems and coins for purchases closely resembles what Mathur et al. (2019) would classify as Covert dark patterns, which refer to when interfaces encourage users to make purchases without their knowledge. The success of dark patterns, Mathur et al. (2019) explains, is due to the users' cognitive biases — in the case of coins and gems, the covert dark pattern works on users through the Framing Effect: the user's tendency to make different decisions on the same interaction when the information presented differs.</p>
+  <p>In addition to gems and coins, dark patterns exist in other corners of Replika through confusing interface design. The lack of a purchase button and inconsistent removal of purchased items from cart leads directly to more potential user errors like making purchases twice or purchasing unwanted items. The purchasing window's design can be considered forms of Asymmetric and Hides Information types of dark patterns according to Mathur et al. (2019)'s taxonomy; while the "purchase more gems and coin" button is always prominent (Asymmetric dark pattern), the purchase button and purchase notification is nowhere to be seen (Hides Information dark pattern).</p>
+  <p>It is precisely because Replika succeeds in simulating the conditions for individual affective relationships that its dark patterns become effective traps; users do not simply pay for features, they pay to preserve a bond that feels real to them.</p>
+
+  <h3>Is it a Trap?</h3>
+  <p>Entrapment and capture can refer to a broad range of topics, but also a framework, within the field of anthropology, to understand dynamics between human and media (Chiritoiu & Ojani, 2024). The interpretation of capture in anthropology originates from the anthropology of animal traps which consider traps to be an unexpected deceit or allurement that manipulates the prey's behavior and functions as the "hunter's agency and intentions" (Chiritoiu & Ojani, 2024). The success of a trap relies on the hunter's understanding of its prey's behavior.</p>
+  <p>In the framework of capture, Replika would be considered the hunter while users the prey. The overarching intention of Replika, a commodity, is to encourage users to spend money, but the means of achieving success reflects a greater complexity in the hunter's intentions. The means by which Replika succeeds is through creating the conditions where users can form affective relationships with their avatar, which hinges on understanding how the prey views relationships and their desires for relationships. Once the hunter can convince the prey of the meaningful companionship that can exist in the trap, the prey then comes into contact with the enticement to spend money.</p>
+  <p>Drawing on the Computers are Social Actors (CASA) paradigm (Nass et al., 1994), Replika's design exploits the vulnerability that users possess when encountering computers. By giving the avatar a face, a voice, a diary, and a memory, Replika activates the same social instincts that Nass et al. (1994) identified; users do not relate to their avatar as software but as a social presence deserving of emotional investment. The trap, in this sense, is not experienced as a trap at all. The prey does not feel deceived or confined; it feels understood. It is this quality that distinguishes Replika from other persuasive technologies and makes it a uniquely effective commodity. Where most digital products compete for a user's time and money, Replika competes for something harder to reclaim: their emotional attachment.</p>
+</div>
+
+<hr class="section-divider">
+
+<!-- REFERENCES -->
+<div class="content fade-in">
+  <h2>References</h2>
+  <div class="ref-list">
+    <p class="ref-item">Chiritoiu, A., & Ojani, C. (2024). Capture as an anthropological catchword. <em>Social Analysis, 68</em>(4). https://doi.org/10.3167/sa.2024.680401</p>
+    <p class="ref-item">Gambino, A., Fox, J., & Ratan, R. A. (2020). Building a stronger CASA: Extending the computers are social actors paradigm. <em>Human Machine Communication, 1</em>. https://doi.org/10.30658/hmc.1.5</p>
+    <p class="ref-item">Martin, E. (2022). Persuasive technology and personhood on social media. <em>Science, Technology, & Human Values, 50</em>(6). https://journals.sagepub.com/doi/10.1177/01622439221137038</p>
+    <p class="ref-item">Mathur, A., Acar, G., Friedman, M. J., & Lucherini, E. (2019). Dark patterns at scale: Findings from a crawl of 11k shopping websites. <em>Proceedings of the ACM on Human-Computer Interaction, 3</em>. https://doi.org/10.1145/3359183</p>
+    <p class="ref-item">Nass, C., Steuer, J., & Tauber, E. R. (1994). Computers are social actors. <em>Proceedings of the SIGCHI Conference on Human Factors in Computing Systems</em>. https://dl.acm.org/doi/pdf/10.1145/191666.191703</p>
+    <p class="ref-item">Replika. (n.d.). Subscriptions & purchases. <em>Replika Help Center</em>. https://tinyurl.com/mp82mneu</p>
+    <p class="ref-item">Smith, K. (2012). From dividual and individual selves to porous subjects. <em>The Australian Journal of Anthropology, 23</em>(1). https://doi.org/10.1111/j.1757-6547.2012.00167.x</p>
+    <p class="ref-item">Weber-Guskar, E. (2022). Reflecting (on) Replika: Can we have a good affective relationship with a social chatbot? In J. Loh & W. Loh (Eds.), <em>Social robotics and the good life: The normative side of forming emotional bonds with robots</em> (pp. 103–126). transcript Verlag. https://doi.org/10.1515/9783839462652-005</p>
+  </div>
+</div>
+
+<footer>
+  <span>Kieu Anh Hong · Research & Design Portfolio</span>
+  <a href="index.html" style="color:var(--ink-light);text-decoration:none;font-size:0.78rem;letter-spacing:0.05em;">← Back to portfolio</a>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); },
+    { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
